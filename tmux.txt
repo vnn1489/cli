@@ -4,3 +4,5 @@ tmux rename-window CurrentWindow ---> RENAME WINDOW INSIDE SESSION
 tmux attach OR tmux attach -t SessionNumber ---> COMEBACK TMUX TERMINAL
 tmux ls OR tmux list-sessions ---> LIST ALL CURRENT SECTION
 tmux rename-session SetNameSession ---> RENAME SESSION
+tmux session -t
+tmux kill-session -a

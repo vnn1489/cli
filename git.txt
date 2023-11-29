@@ -4,12 +4,12 @@ https://vnn1489.notion.site/git-e7d33c3f6c95412e8da64bd56ca10b2d?pvs=4
 git config --list ---> CHECK CREDENTIAL
 git push origin  --delete BranchName ---> DELETE BRANCH ON REPOSITORY FORM LOCAL
 
-CREATE A BRANCH FROM AN EXISTING BRANCH
+---- CREATE A BRANCH FROM AN EXISTING BRANCH
 git checkout ExistingBranch
 git branch NewBranch
 git checkout -b NewBranch ExistingBranch ---> SHORTER WAY FOR 2 CLI ABOVE
 
-CREATE AN INDEPENDENT BRANCH
+---- CREATE AN INDEPENDENT BRANCH
 git checkout main
 git branch NewBranch
 git checkout -b NewBranch ---> SHORTER WAY FOR 2 CLI ABOVE
@@ -28,3 +28,6 @@ git pull origin BranchName
 git reset --hard origin/BranchName
 git push -f origin BranchName
 git add FileNameOrDirectory && git commit && git push FOR FILE OR DIRECTORY SPECIFICALLY THEN GIT PULL AGAIN
+
+---- ALIAS
+alias commit='git commit -m "`date -u "+%Y%m%d_%H%M_UTC"`"'

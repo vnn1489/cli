@@ -57,6 +57,12 @@ n8g     ---- NETWORKING > DNS (DOMAIN NAME SERVER)
 n8g     /etc/resolv.conf ---> FILE WITH SYMBOL LINK
 n8g     /run/systemd/resolve ---> ROOT DIRECTORY (DEPEN DISTRO)
 n8g     resolvectl status ---> DISPLAY THE CURRENT DNS
+n8g     ---- NETWORKING > ALIAS
+n8g     alias ipp='curl icanhazip.com'
+n8g     alias iplh='hostname -I'
+n8g     alias centos='ssh centos@IP'
+n8g     alias ubuntu='ssh ubuntu@IP'
+n8g     alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
 
 u2r     ---- USER
 u2r     USER STRUCTURE: UserName:Password(at /etc/shadow):UID:GID:UserInfo(opt):HomeDirectory:DefaultShell
@@ -96,6 +102,9 @@ s5d     ---- SYSTEMD
 s5d     journalctl -fu ServiceName ---> VIEW LOG REAL TIME
 s5d     journalctl -p err -u ServiceName ---> PRIORITY SHOW ERROR LOG
 s5d     journalctl --help
+s5d     alias sp='systemctl suspend -i'
+s5d     alias sn='systemctl poweroff -i'
+s5d     alias rb='systemctl reboot -i'
 
 p5s     ---- PROCESS
 p5s     kill --->
@@ -103,6 +112,13 @@ p5s     kill PidNumber
 p5s     kill -SignalNumber PidNumber
 p5s     killall --->
 p5s     man 7 signal ---> MANUAL
+
+o3r     ---- OTHER
+o3r     alias reload='source ~/.bashrc'
+o3r     alias time-utc='date -u "+%Y%m%d_%H%M_UTC"'
+o3r     alias extract='tar -xvf' ---> DECOMPRESSION
+o3r     /etc/skel/.bashrc ---> FOR ALL USER
+o3r     /home/UserName/.bashrc ---> FOR EACH SPECIFIC USER
 
 STRE    ---- STREAM
 STRE    find PathOfDirectory -name "*.extension" 1> PathOfFile --->

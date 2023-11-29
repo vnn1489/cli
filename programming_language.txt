@@ -10,3 +10,6 @@ cd YourDirectoryProject
 sudo python3 -m venv SetNameVenv
 source NameVenv/bin/activate ---> ACTIVE ENVIRONMENT
 deactivate ---> EXIT VENV
+
+---- PYTHON > ALIAS
+alias pt3='python3'
