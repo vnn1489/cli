@@ -1,0 +1,12 @@
+---- PYTHON
+pip install PackageName
+pip install --upgrade PackageName
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+---- PYTHON > SETUP VIRTUAL ENVIRONMENTS
+apt-i python3-venv
+cd YourDirectoryProject
+sudo python3 -m venv SetNameVenv
+source NameVenv/bin/activate ---> ACTIVE ENVIRONMENT
+deactivate ---> EXIT VENV

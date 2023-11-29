@@ -1,0 +1,31 @@
+# /etc/skel/.bashrc ---> FOR ALL USER
+# /home/UserName/.bashrc ---> FOR EACH SPECIFIC USER
+
+# COMPRESSION & DECOMPRESSION
+alias extract='tar -xvf'
+
+# NETWORK
+alias ipp='curl icanhazip.com'
+alias iplh='hostname -I'
+alias centos='ssh centos@IP'
+alias ubuntu='ssh ubuntu@IP'
+alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
+
+# APPS
+alias svim='sudo vim'
+alias snano='sudo nano'
+alias pt3='python3'
+alias tmux-ls='tmux list-sections'
+alias tmux-ks='tmux-session -t'
+alias tmux-kas='tmux kill-session -a'
+alias commit='git commit -m "`date -u "+%Y%m%d_%H%M_UTC"`"'
+alias time-utc='date -u "+%Y%m%d_%H%M_UTC"'
+
+# OTHER
+alias s='sudo'
+alias sp='systemctl suspend -i'
+alias sn='systemctl poweroff -i'
+alias rb='systemctl reboot -i'
+alias ...='cd ../../../'
+alias ....='../../../../'
+alias reload='source ~/.bashrc'

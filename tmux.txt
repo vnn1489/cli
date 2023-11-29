@@ -1,0 +1,6 @@
+tmux kill-server ---> CLOSE ALL SESSION
+tmux new-window ---> CREATE NEW WINDOW IN SESSION
+tmux rename-window CurrentWindow ---> RENAME WINDOW INSIDE SESSION
+tmux attach OR tmux attach -t SessionNumber ---> COMEBACK TMUX TERMINAL
+tmux ls OR tmux list-sessions ---> LIST ALL CURRENT SECTION
+tmux rename-session SetNameSession ---> RENAME SESSION

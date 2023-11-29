@@ -1,0 +1,30 @@
+https://vnn1489.notion.site/git-e7d33c3f6c95412e8da64bd56ca10b2d?pvs=4
+
+~/.gitconfig ---> FILE CONFIG
+git config --list ---> CHECK CREDENTIAL
+git push origin  --delete BranchName ---> DELETE BRANCH ON REPOSITORY FORM LOCAL
+
+CREATE A BRANCH FROM AN EXISTING BRANCH
+git checkout ExistingBranch
+git branch NewBranch
+git checkout -b NewBranch ExistingBranch ---> SHORTER WAY FOR 2 CLI ABOVE
+
+CREATE AN INDEPENDENT BRANCH
+git checkout main
+git branch NewBranch
+git checkout -b NewBranch ---> SHORTER WAY FOR 2 CLI ABOVE
+---- PULL ALL BRANCH
+git branch -r | grep -v '\->' | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+git fetch --all
+git pull --all
+---- HANDLE CONFLIG
+git fetch origin BranchName
+git rebase origin/BranchName
+git push -f origin BranchName
+- BACKUP CODE IF THIS IS NECESSARY
+- RUN SOME CLI & OBSERVE OUTPUT CONTENT OF THAT CLI
+git fetch origin
+git pull origin BranchName
+git reset --hard origin/BranchName
+git push -f origin BranchName
+git add FileNameOrDirectory && git commit && git push FOR FILE OR DIRECTORY SPECIFICALLY THEN GIT PULL AGAIN

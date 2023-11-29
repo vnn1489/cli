@@ -1,0 +1,62 @@
+---- DNF
+alias d1f-li='dnf list installed' ---> PACKAGES INSTALLED BY USER
+alias d1f-s='dnf search'
+alias d1f-i='sudo dnf install -y'
+alias d1f-rei='sudo dnf reinstall -y'
+alias d1f-rem='sudo dnf remove -y'
+alias d1f-uu='sudo dnf update -y && sudo dnf upgrade -y'
+alias d1f-a='sudo dnf autoremove -y'
+       
+---- YUM
+alias y1m-li='yum list installed' ---> PACKAGES INSTALLED BY USER
+alias y1m-s='yum search'
+alias y1m-i='sudo yum install -y'
+alias y1m-r='sudo yum remove -y'
+alias y1m-u='yum upgrade -y'
+
+---- APT
+/var/log/apt/history.log ---> FILE HISTORY INSTALLED APT PACKAGES
+alias a1t-uu='sudo apt update && sudo apt upgrade -y'
+alias a1t-udu='sudo apt update && sudo apt dist-upgrade -y'
+alias a1t-s='apt search'
+alias a1t-cp='apt-cache pkgnames'
+alias a1t-i='sudo apt install -y'
+alias a1t-li='apt list --installed'
+alias a1t-r='sudo apt remove -y' ---> REMOVE APP BUT KEEP CONFIG
+alias a1t-p='sudo apt purge -y' ---> DELETE CONFIG WHEN REMOVE APP
+alias a1t-a='sudo apt autoremove -y' ---> REMOVE DEPENDENCIES OF APPS WAS REMOVE
+alias a1t-fu='sudo apt full-upgrade -y'
+alias a1t-inu='sudo apt install CreateVariableToEnterPackageName --no-upgrade' ---> su dung bien
+alias a1t-ispec='sudo apt install PackageName=VersionNumber' ---> su dung bien
+alias a1t-lu='apt list --upgradable'
+alias a1t-lav='apt list --all-versions'
+
+---- SNAP
+alias s2p-i='sudo snap install' ---> <package_name> FOR ONLINE | <package_name.snap> FOR OFFLINE
+alias s2p-rem='sudo snap remove'
+alias s2p-la='snap list --all'
+alias s2p-f='snap find'
+alias s2p-c='snap changes'
+alias s2p-ref='sudo snap refresh' ---> UPDATE ALL OR ONLY <package>
+alias s2p-rl='sudo snap refresh --list' ---> LIST UPDATE TO VIEW
+alias s2p-rev='sudo snap revert' ---> <package>
+alias s2p-d='snap download' ---> <package_name>
+alias s2p-a='snap ack' ---> <package_name.assert> FOR OFFLINE
+
+---- FLATPAK
+/home/linux/.var/app ---> WHERE STORE CONFIG APP INSTALLED
+alias f5k-infr='flatpak install --from' ---> WITH https 
+alias f5k-infl='flatpak install flathub -y' ---> INSTALL FROM ONLINE & APP WILL INSTALL ON SYSTEMWIDE
+alias f5k-uif='flatpak --user install flathub -y' ---> INSTALL FROM ONLINE & APP WILL INSTALL ON USER
+alias f5k-i='flatpak install' ---> FOR OFFLINE WITH FORMAT <ApplicationID>.flatpakref
+alias f5k-r='flatpak run'
+alias f5k-udd='flatpak uninstall --delete-data -y'
+alias f5k-unun='flatpak uninstall --unused' ---> CLEAN UP
+alias f5k-uuu='flatpak --user uninstall --unused' ---> CLEAN UP WITH USER MODE
+alias f5k-un='flatpak uninstall' ---> 
+alias f5k-usun='flatpak --user uninstall' ---> UNINSTALL APP WITH USER MODE
+alias f5k-l='flatpak list'
+alias f5k-s='flatpak search'
+alias f5k-up-y='flatpak update -y'
+alias f5k-uu='flatpak --user update -y'
+alias f5k-uv-v='flatpak update -v' ---> TO FIX LIKE THIS error: runtime/org.freedesktop.Platform/x86_64/1.6 not installed
