@@ -32,4 +32,5 @@ git reset --hard CommitHash ---> COMEBACK TO STATE YOU DESIRE
 git reset --hard ORIG_HEAD ---> ????
 
 ---- ALIAS
-alias commit='git commit -m "`date -u "+%Y%m%d_%H%M_UTC"`"'
+alias commit='git commit -m "`date -u "+%Y%m%d_%H%M_UTC"`"' ---> VERSION 0
+alias commit='git commit -m "`date -u "+%a %Y%m%d %H:%M(24h) %Z"`"' ---> VERSION 1
