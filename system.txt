@@ -1,24 +1,54 @@
-p8n     ---- PERMISSION
 p8n     type    rwx     rwx     rwx
 p8n     d, l    421     421     421
-p8n     d, l    user    group   other
+p8n     d, l    User    Group   OtherUser
 p8n     0(---)  1(--x)  2(-w-)  3(-wx)  4(r--)  5(r-x)  6(rw-)  7(rwx)
-p8n     USE FLAG chmod -R TO SET PERMISSION WITH RECURSIVE FOR DIRECTORY
-p8n     chmod u±rwx FileOrDirectory ---> FOR SPECIFIC USER
-p8n     chmod a±rwx FileOrDirectory ---> FOR ALL USER
-p8n     chmod ±rwx FileOrDirectory --->
-p8n     chmod g±rwx FileOrDirectory ---> FOR GROUP
-p8n     chmod o±rwx FileOrDirectory ---> FOR OTHER USER
-p8n     chmod go±rwx FileOrDirectory ---> COMBINE FOR GROUP & OTHER USER
+
+p8n     --- PERMISSION > MODE
 p8n     chmod NumberNumberNumber FileOrDirectory ---> SET PERMISSION WITH NUMERICALLY (4210)
-p8n     sudo chown UserName FileOrDirectory ---> 
-p8n     sudo chown UserName: UserName FileOrDirectory ---> 
-p8n     sudo chown UserName: FileOrDirectory (in the same previuos cli)
-p8n     sudo chown -R NewOwner:NewGroup PathOfDirectoryOrFile ---> CHANGE OWN FOR FILE AND DIRECTORY
+p8n     chmod a±rwx FileOrDirectory ---> FOR ALL (User, Group, OtherUser)
+p8n     chmod ±rwx FileOrDirectory OR chmod u±rwx FileOrDirectory ---> FOR USER
+p8n     chmod o±rwx FileOrDirectory ---> SET FOR OTHER USER
+p8n     chmod g±rwx FileOrDirectory ---> SET FOR GROUP
+p8n     chmod g±rwx FileOrDirectory ---> FOR GROUP
+p8n     TIPS: USE go±rwx OR og±rwx TO SET UP BOTH USERS AND GROUP SIMULTANEOUSLY
 
-t2e     ---- TIME
-t2e     date -u "+%Y-%m-%d %H:%M:%S UTC" ---> GET UTC TIME
+p8n     ---- PERMISSION > OWNER
+p8n     sudo chown UserName:GroupName FileOrDirectory
 
+p8n     ---- PERMISSION > USER
+p8n     /etc/passwd ---> UserName : Password(AT /etc/shadow) : UID : GID : UserInfo(opt) : HomeDirectory : DefaultShell
+p8n     sudo useradd UserName ---> CREATING USER
+p8n     sudo useradd -r UserNameSystem ---> CREATE SYSTEM USER
+p8n     sudo su UserName OR sudo su - UserName ---> SWITCH TO USER
+p8n     sudo userdel -r UserName ---> REMOVING USER INCLUDE DIRECTORY OF USER WITH FLAG -r
+p8n     passwd UserName ---> CHANGE, UPDATE PASSWORD FOR USER
+p8n     sudo usermod -aG UserName GroupName ---> ADDING USER TO OTHER GROUP
+p8n     sudo gpasswd -d UserName GroupName ---> DELETING USER
+p8n     ---- PERMISSION > USER > CHANGE NAME (CÓ THỜI GIAN THÌ KIỂM NHIỆM LẠI)
+p8n     sudo usermod -l NewUserName OldUserName
+p8n     sudo usermod -m -d /home/NewUserName OldUserName
+p8n     sudo groupmod -n NewUserName OldUserName
+p8n     sudo userdel oldusername
+
+p8n     ---- PERMISSION > GROUP
+p8n     groups ---> LIST GROUP RELATED TO USER
+p8n     cat /etc/group ---> GroupName : Password : GroupId : GroupMembers
+p8n     sudo groupdel GroupName ---> DELETING GROUP
+p8n     sudo groupadd GroupName ---> CREATE GROUP
+p8n     sudo groupadd -g OptionPid GroupName ---> CREATE GROUP WITH PID SPEC
+p8n     groups UserName ---> LIST GROUP RELATED TO USER
+p8n     ---- PERMISSION > GROUP > CHANGE NAME (CÓ THỜI GIAN THÌ TÌM HIỂU NỘI DUNG NÀY)
+
+p8n     ---- PERMISSION > SUDO
+p8n     /etc/sudoers ---> OPEN FILE sudoers TO EDIT. THIS FILE IS IMPORTANT, BE CAREFUL WHEN YOU WORK WITH THIS FILE, DON'T LOCK YOURSELF IN. USE CLI sudo visudo OR sudo EDITOR=vim visudo FOR SAFER MANIPULATION OF FILES
+p8n     UserName ALL=(ALL:ALL) ALL ---> FULL ACCESS
+p8n     UserName ALL=(ALL:ALL) PathOfCommand0, PathOfCommand1, PathOfCommandN ---> SPECIFIC COMMANDS
+p8n     UserName Host0=(ALL:ALL) ALL, Host1=(ALL:ALL) ALL ---> FULL ACCESS
+p8n     %GroupName ALL=(ALL:ALL) ALL ---> FULL ACCESS
+p8n     %GroupName Host0=(ALL:ALL) ALL, Host1=(ALL:ALL) ALL ---> FULL ACCESS
+p8n     ServiceAccount ALL=(ALL:ALL) PathOfServiceCommand ---> GRANT EXECUTION FOR SERVICE
+
+-------------------------------------------------------------------------------
 r6e     ---- RESOURCE
 r6e     free ---> RAM
 r6e     parted ---> PARTITION
@@ -37,81 +67,60 @@ r6e     sudo dmidecode ---> DETAILED INFORMATION HARDWARE
 r6e     sudo blkid ---> ????: RE-SEARCH MEANNING CONTENT OUTPUT OF THIS CLI
 r6e     sudo fdisk -l ---> ????: RE-SEARCH MEANNING CONTENT OUTPUT OF THIS CLI
 
+-------------------------------------------------------------------------------
+
 n8g     ---- NETWORKING
 n8g     nmcli --->
 n8g     nmtui --->
 n8g     ip addr --->
 n8g     ifconfig --->
 n8g     netstat -tulpn ---> CHECK NETWORK & LISTENING PORTS
-n8g     scp PathOfFilesOrFolders HostName@IP:/Path ---> SEND
-n8g     scp HostName@IP:PathOfFilesOrFolders /Path ---> REVERSE
-n8g     ssh-key -t ed25519 -C "OptionName" ---> CREATE SSH KEY
-n8g     ssh-copy-id -i ~/.ssh/PublicKey.pub UserName@Ip  --->
-n8g     ssh -i ~/.ssh/PrivateKey UserName@Ip --->
-n8g     ---- NETWORKING > SET CONNECT TO SERVER WITHOUT PASSWORD
+n8g     scp PathOfFilesOrDirectories HostName@Ip:/Path ---> SEND
+n8g     scp HostName@Ip:PathOfFilesOrDirectories /Path ---> REVERSE
+
+n8g     ---- NETWORKING > SET CONNECT TO HOST WITHOUT PASSWORD
 n8g     ssh-keygen ---> GENERATE SSH KEY PAIR (IF NOT ALREADY DONE)
 n8g     ssh-copy-id UserName@ip ---> COPY PUBLIC KEY TO SERVER WITHOUT GEN SSH KEY (????: IS WHERE SAVE SSH KEY)
 n8g     chmod 700 ~/.ssh
 n8g     chmod 600 ~/.ssh/authorized_keys
+
+        NHAP, NEU PHAN O TREN CHAYJ OK THI XOA THANG NAY DI
+n8g     ssh-copy-id -i ~/.ssh/PublicKey.pub UserName@Ip  --->
+n8g     ssh -i ~/.ssh/PrivateKey UserName@Ip --->
+n8g     ssh-key -t ed25519 -C "OptionName" ---> CREATE SSH KEY
+
 n8g     ---- NETWORKING > DNS (DOMAIN NAME SERVER)
 n8g     /etc/resolv.conf ---> FILE WITH SYMBOL LINK
 n8g     /run/systemd/resolve ---> ROOT DIRECTORY (DEPEN DISTRO)
 n8g     resolvectl status ---> DISPLAY THE CURRENT DNS
+
 n8g     ---- NETWORKING > ALIAS
-n8g     alias ipp='curl icanhazip.com'
-n8g     alias iplh='hostname -I'
-n8g     alias centos='ssh centos@IP'
-n8g     alias ubuntu='ssh ubuntu@IP'
+n8g     alias ipp='curl icanhazip.com' ---> CHECK PUBLIC IP
+n8g     alias iplh='hostname -I' ---> CHECK PRIVATE HOST IP
+n8g     alias centos-d='ssh centos@IP' ---> FOR DESKTOP
+n8g     alias centos-s='ssh centos@IP' ---> FOR SERVER
+n8g     alias ubuntu-d='ssh ubuntu@IP' ---> FOR DESKTOP
+n8g     alias ubuntu-s='ssh ubuntu@IP' ---> FOR SERVER
 n8g     alias speedtest='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -'
 
-u2r     ---- USER
-u2r     USER STRUCTURE: UserName:Password(at /etc/shadow):UID:GID:UserInfo(opt):HomeDirectory:DefaultShell
-u2r     /etc/passwd     /etc/group      /etc/shadow ---> FILES ENCRYPT PASSWORD OF USERS
-u2r     sudo /etc/sudoers ---> THIS FILE IS IMPORTANT, BE CAREFUL WHEN YOU WORK WITH THIS FILE, DON'T LOCK YOURSELF IN. USE CLI sudo visudo FOR SAFER MANIPULATION OF FILES
-u2r     sudo useradd UserName ---> CREATING USER
-u2r     sudo useradd -r UserNameSystem ---> CREATE SYSTEM USER
-u2r     sudo su UserName ---> SWITCH TO USER
-u2r     sudo su - UserName ---> SWITCH TO USER
-u2r     sudo userdel -r UserName ---> REMOVING USER INCLUDE DIRECTORY OF USER WITH FLAG -r
-u2r     passwd UserName ---> CHANGE, UPDATE PASSWORD USER
-u2r     sudo usermod -aG UserName GroupName ---> ADDING USER
-u2r     sudo gpasswd -d UserName GroupName ---> DELETING USER
-u2r     ---- USER > CHANGE USERNAME
-u2r     sudo usermod -l NewUserName OldUserName
-u2r     sudo usermod -m -d /home/NewUserName OldUserName
-u2r     sudo groupmod -n NewUserName OldUserName
-u2r     sudo userdel oldusername
-
-g3p     ---- GROUP
-g3p     sudo groupdel GroupName ---> DELETING GROUP
-g3p     sudo groupadd GroupName ---> CREATE GROUP
-g3p     groups ---> LIST GROUP RELATED TO USER
-g3p     sudo groupadd -g OptPid GroupName ---> CREATE GROUP WITH PID SPEC
-g3p     groups UserName ---> LIST GROUP RELATED TO USER
-g3p     ---- GROUP > CONTROLS WHO IS ALLOWED TO RUN ADMINISTRATIVE COMMANDS WITH SUDO
-g3p     sudo EDITOR=vim visudo --->
-g3p     %sudo ALL=(ALL:ALL) ALL
-g3p     - %sudo: This specifies the group to which the rule applies. In this case, it's the sudo group.
-g3p     - ALL: This indicates the host or hosts to which the rule applies. ALL means that the rule applies to any host.
-g3p     - (ALL:ALL): This part specifies which users and terminals the members of the sudo group are allowed to impersonate. The format is (RunAsUser:RunAsGroup) RunInTerminals.
-g3p         + ALL:ALL This allows members of the sudo group to run commands as any user and any group.
-g3p     - ALL: This specifies the command the user can run. ALL means that the rule applies to any command.
-g3p     ---> It's important to be cautious when editing the sudoers file, as incorrect configurations can lead to security vulnerabilities or unintended behavior. Always use the visudo command to edit the sudoers file to ensure proper syntax and validation.
+-------------------------------------------------------------------------------
 
 s5d     ---- SYSTEMD
 s5d     journalctl -fu ServiceName ---> VIEW LOG REAL TIME
 s5d     journalctl -p err -u ServiceName ---> PRIORITY SHOW ERROR LOG
-s5d     journalctl --help
 s5d     alias sp='systemctl suspend -i'
 s5d     alias sn='systemctl poweroff -i'
 s5d     alias rb='systemctl reboot -i'
 
+-------------------------------------------------------------------------------
+
 p5s     ---- PROCESS
-p5s     kill --->
 p5s     kill PidNumber
 p5s     kill -SignalNumber PidNumber
 p5s     killall --->
 p5s     man 7 signal ---> MANUAL
+
+-------------------------------------------------------------------------------
 
 o3r     ---- OTHER
 o3r     alias reload='source ~/.bashrc'
@@ -146,3 +155,8 @@ CHEC    find PathOfDirectory -type f -exec sha256sum {} + | sha256sum
 FIDI    ---- FILES & DIRECTOIES
 FIDI    cp -n -v SourceFile DestinationDirectory ---> DEAL WITH DUPLICATE
 FIDI    cp -i SourceFile DestinationDirectory ---> INTERACTIVELY COPY
+
+
+
+t2e     ---- TIME
+t2e     date -u "+%Y-%m-%d %H:%M:%S UTC" ---> GET UTC TIME
