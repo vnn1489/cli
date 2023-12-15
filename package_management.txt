@@ -32,7 +32,7 @@ alias apt-lu='apt list --upgradable'
 alias apt-lav='apt list --all-versions'
 
 ---- SNAP
-alias s2p-i='sudo snap install' ---> <package_name> FOR ONLINE | <package_name.snap> FOR OFFLINE
+alias s2p-i='sudo snap install -y' ---> <package_name> FOR ONLINE | <package_name.snap> FOR OFFLINE
 alias s2p-rem='sudo snap remove'
 alias s2p-la='snap list --all'
 alias s2p-f='snap find'
