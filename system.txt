@@ -74,7 +74,10 @@ n8g     nmcli --->
 n8g     nmtui --->
 n8g     ip addr --->
 n8g     ifconfig --->
+n8g     ss -tuln ---> SOCKET STATISTICS
+n8g     sudo lsof -i -n -P ---> LIST OPEN NETWORK CONNECTIONS AND ASSOCIATED PROCESSES
 n8g     netstat -tulpn ---> CHECK NETWORK & LISTENING PORTS
+n8g     netstat -tuln ---> NETWORK-RELATED INFORMATION
 n8g     scp PathOfFilesOrDirectories HostName@Ip:/Path ---> SEND
 n8g     scp HostName@Ip:PathOfFilesOrDirectories /Path ---> REVERSE
 
@@ -147,6 +150,7 @@ TIOT    sudo hostname YourHostName ---> SET OR RESET HOST NAME
 TIOT    mv *.extension PathToPaste --->
 TIOT    sudo ln -s PathOfFile PathOfDirectory ---> SET SYMBOLIC LINK
 TIOT    sudo rm LinkName ---> REMOVE SYMBOLIC LINK
+        alias bat='batcat'
 
 CHEC    ---- CHECKSUM
 CHEC    KÉT QUẢ CHECKSUM LÀ GIỐNG NHAU NẾU CÁC FILE HOẶC CÁC DIRECTORY ĐỀU ĐƯỢC GIẢI NÉN TỪ 1 BẢN ZIP ĐƯỢC TẠO RA TẠI 1 THỜI ĐIỂM NHẤT ĐỊNH
