@@ -1,0 +1,7 @@
+vim +LineNumber FileName ---> GO TO LINE
+vim -o FileName0 FileName1 FileNameN ---> HORIZONTALLY
+vim -O FileName0 FileName1 FileNameN ---> VERTICALLY
+
+ctrl + z
+jobs
+fg JobNumber
